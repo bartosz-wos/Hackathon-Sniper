@@ -3,7 +3,9 @@
 It is a simple automated tool that scans web for upcoming hackathons and sends notifs via discord Webhooks
 
 **Core:** Python engine with BeautifulSoup and DuckDuckGo Search
+
 **Brain** Local LLM analysis with Ollama
+
 **Notifs** Discord Embeds with already sent link tracking
 
 ## Usage
