@@ -1,14 +1,22 @@
 import time
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 from src.sniper.scraper import Scraper
 from src.sniper.brain import Brain
 from src.sniper.discord import DCNotifier
 
-WEBHOOK_URL = ''
+load_dotenv()
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
+
+if not WEBHOOK_URL:
+    print('webhook url not found in .env')
+    exit(1)
+
 DATA_DIR = Path('data')
 SEEN_FILE = DATA_DIR / 'seen.txt'
+
 
 def load_seen():
     if not SEEN_FILE.exists(): return set()

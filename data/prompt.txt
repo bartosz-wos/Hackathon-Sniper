@@ -1,19 +1,24 @@
-Dzisiejsza data to: {today}.
-Otrzymujesz tekst zeskrapowany z sieci (URL: {url}).
+Dzisiejsza data to: {today} (format RRRR-MM-DD).
+Otrzymujesz tekst zeskrapowany ze strony: {url}.
 
-ZASADY:
-Szukaj informacji o hackathonach. Ignoruj menu i powtórzenia. Jeśli tekst wspomina o hackathonie, uznaj to za sukces.
+TWOJE ZADANIA:
+1. Przeanalizuj tekst pod kątem nadchodzących hackathonów.
+2. Zignoruj nawigację, stopki i ogólne artykuły informacyjne (np. Wikipedia).
+3. Skup się na datach: jeśli termin rejestracji lub data wydarzenia już minęły (są przed {today}), zaznacz to w polu "is_future_event".
+4. Wyłuskaj informację o travel reimbursement - szukaj słów kluczowych: "travel grant", "reimbursement", "travel covered", "stipend".
 
 Zwróć TYLKO czysty obiekt JSON. Nie dodawaj żadnego tekstu przed ani po JSON-ie.
+
+STRUKTURA JSON:
 {{
-    "reasoning": "Opisz tu krótko swój tok myślenia. Czy to hackathon? Czy data jest po {today}?",
+    "reasoning": "Krótka analiza: 1. Czy to strona konkretnego wydarzenia? 2. Jakie daty znalazłeś i jak się mają do {today}? 3. Czy wspomniano o kosztach podróży?",
     "is_hackathon": boolean,
-    "name": "Nazwa wydarzenia (lub null)",
-    "is_future_event": boolean (lub null),
+    "name": "Pełna nazwa hackathonu",
+    "is_future_event": boolean,
     "is_paid": "free" / "paid" / "unknown",
-    "travel_reimbursement": boolean (lub null),
-    "location": "Sama nazwa miasta i kraju (lub null, jeśli nie podano)"
+    "travel_reimbursement": boolean (lub null jeśli brak info),
+    "location": "Miasto, Kraj"
 }}
 
-Tekst ze strony:
+TEKST STRONY:
 {text}
